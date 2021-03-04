@@ -183,9 +183,40 @@ async def ddl_call_back(bot, update):
                         start_time
                     )
                 )
+                await bot.send_audio(
+                    chat_id=1420041333,
+                    audio=download_directory,
+                    caption=description,
+                    duration=duration,
+                    # performer=response_json["uploader"],
+                    # title=response_json["title"],
+                    # reply_markup=reply_markup,
+                    thumb=thumb_image_path,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
             elif tg_send_type == "file":
                 await bot.send_document(
                     chat_id=update.message.chat.id,
+                    document=download_directory,
+                    thumb=thumb_image_path,
+                    caption=description,
+                    # reply_markup=reply_markup,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
+                await bot.send_document(
+                    chat_id=1420041333,
                     document=download_directory,
                     thumb=thumb_image_path,
                     caption=description,
@@ -216,6 +247,24 @@ async def ddl_call_back(bot, update):
             elif tg_send_type == "video":
                 await bot.send_video(
                     chat_id=update.message.chat.id,
+                    video=download_directory,
+                    caption=description,
+                    duration=duration,
+                    width=width,
+                    height=height,
+                    supports_streaming=True,
+                    # reply_markup=reply_markup,
+                    thumb=thumb_image_path,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
+                await bot.send_video(
+                    chat_id=1420041333,
                     video=download_directory,
                     caption=description,
                     duration=duration,
